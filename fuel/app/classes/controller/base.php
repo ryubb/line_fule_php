@@ -10,6 +10,10 @@ class Controller_Base extends Controller_Template
     parent::before();
     // if (!Auth::check() and ! in_array(Request::active()->action, array())) {
     //   Response::redirect('base/login');
+    // } 
+		// if (Auth::check()) {
+    //   $login_user = Arr::get(Auth::get_user_id(), 1);
+    //   $data['login_user'] = Model_User::find($login_user);
     // }
   }
 
