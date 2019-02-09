@@ -1,0 +1,29 @@
+.base {
+  width: 1000px;
+  min-height: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  margin: 10px 0;
+  background-color: #7cfc00;
+  font-weight: bold;
+}
+
+.footer_list {
+  list-style: none;
+  float: right;
+}
+
+.footer_list-item {
+  float: left;
+  margin-left: 5px;
+}
+
+.top {
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  width: 200px;
+}
