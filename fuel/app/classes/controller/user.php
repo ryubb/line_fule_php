@@ -7,7 +7,7 @@ class Controller_User extends Controller_Template
 	public function action_index()
 	{
 		$this->template->title = 'User &raquo; Index';
-		$this->template->content = View::forge('user/index', $data);
+		$this->template->content = View::forge('user/index');
 	}
 
 	public function action_new()
