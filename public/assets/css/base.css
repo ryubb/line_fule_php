@@ -11,8 +11,15 @@
   font-weight: bold;
 }
 
+.sidebar {
+  width: 200px;
+}
+
+.sidebar_list-item {
+  margin-bottom: 20px;
+}
+
 .footer_list {
-  list-style: none;
   float: right;
 }
 
@@ -23,8 +30,4 @@
 
 .top {
   margin-bottom: 20px;
-}
-
-.sidebar {
-  width: 200px;
 }

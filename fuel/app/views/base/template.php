@@ -18,12 +18,14 @@
 		<div class="header text-center">
 			<p>Line PHP</p>
 		</div>
-		<div class="flex">
-			<?php if(Auth::check()): ?>
+		<?php if(Auth::check()): ?>
+			<div class="flex">
 				<?php echo View::forge('base/sidebar'); ?>
-			<?php endif; ?>
-			<?php echo $content; ?>
+				<?php echo $content; ?>
 			</div>
+		<?php else: ?>
+			<?php echo $content; ?>
+		<?php endif; ?>
 		<div>
 			<?php echo View::forge('base/footer'); ?>
 		</div>

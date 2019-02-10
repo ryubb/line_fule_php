@@ -1,1 +1,3 @@
-<h1>haaaa</h1>
+<div class="flex alignItems-center justifyContent-center">
+  <h1>トークを始めよう</h1>
+</div>

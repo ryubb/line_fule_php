@@ -44,8 +44,17 @@ class Controller_Base extends Controller_Template
   public function action_logout()
   {
     Auth::logout();
-
     Response::redirect('base/index');
+  }
+
+  public function action_about()
+  {
+    $this->template->content = View::forge('base/about');
+  }
+
+  public function action_contact()
+  {
+    $this->template->content = View::forge('base/contact');
   }
   
 }
