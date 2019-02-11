@@ -40,7 +40,9 @@ class Controller_User extends Controller_Template
 		$user->password = Auth::hash_password($password);
 
 		if ($user->save()) {
-			Response::redirect('base/login');
+			$auth = Auth::instance();
+			$auth->login($username, $password);
+			Response::redirect('user/index');
 		}
 	}
 
