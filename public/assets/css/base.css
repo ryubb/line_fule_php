@@ -1,7 +1,8 @@
 .base {
   width: 1000px;
-  min-height: 1000px;
+  min-height: 500px;
   margin: 0 auto;
+  background-color: white;
 }
 
 .header {
@@ -10,8 +11,15 @@
   font-weight: bold;
 }
 
+.sidebar {
+  width: 200px;
+}
+
+.sidebar_list-item {
+  margin-bottom: 20px;
+}
+
 .footer_list {
-  list-style: none;
   float: right;
 }
 
@@ -22,8 +30,4 @@
 
 .top {
   margin-bottom: 20px;
-}
-
-.sidebar {
-  width: 200px;
 }

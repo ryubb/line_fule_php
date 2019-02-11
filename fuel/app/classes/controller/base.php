@@ -8,8 +8,13 @@ class Controller_Base extends Controller_Template
   public function before()
   {
     parent::before();
+    $data = array();
     // if (!Auth::check() and ! in_array(Request::active()->action, array())) {
     //   Response::redirect('base/login');
+    // } 
+		// if (Auth::check()) {
+    //   $login_user = Arr::get(Auth::get_user_id(), 1);
+    //   $data['login_user'] = Model_User::find($login_user);
     // }
   }
 
@@ -40,8 +45,17 @@ class Controller_Base extends Controller_Template
   public function action_logout()
   {
     Auth::logout();
-
     Response::redirect('base/index');
+  }
+
+  public function action_about()
+  {
+    $this->template->content = View::forge('base/about');
+  }
+
+  public function action_contact()
+  {
+    $this->template->content = View::forge('base/contact');
   }
   
 }
