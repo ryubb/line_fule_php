@@ -11,6 +11,7 @@
 		</div>
 	</div>
 	<div>
+		<p class="text-strong">タイムラインに投稿する</p>
 		<?php echo Form::open('timeline/create'); ?>
 			<p>
 				<?php echo Form::label('タイトル'); ?>
@@ -29,7 +30,10 @@
 		<p><?php echo Html::anchor('timeline/index/'.$timeline['id'], $timeline['title']); ?></p>
 		<p><?php echo $timeline['body']; ?></p>
 		<p><?php echo Model_User::find($timeline['user_id'])->username; ?></p>
-		<p><?php echo date('Y-m-d h:m:s', $timeline['created_at']); ?></p>
+		<div class="flex">
+			<p class="timeline_date"><?php echo date('Y-m-d h:m:s', $timeline['created_at']); ?></p>
+			<p>0コメント</p>
+		</div>
 		<hr>
 	<?php endforeach ?>
 	<?php echo $pagination; ?>
