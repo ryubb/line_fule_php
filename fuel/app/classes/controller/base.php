@@ -8,10 +8,9 @@ class Controller_Base extends Controller_Template
   public function before()
   {
     parent::before();
-    $data = array();
-    // if (!Auth::check() and ! in_array(Request::active()->action, array())) {
-    //   Response::redirect('base/login');
-    // } 
+    if (!Auth::check() && ! in_array(Request::active()->action, array('index', 'login'))) {
+      Response::redirect('base/login');
+    }
 		// if (Auth::check()) {
     //   $login_user = Arr::get(Auth::get_user_id(), 1);
     //   $data['login_user'] = Model_User::find($login_user);
@@ -25,7 +24,7 @@ class Controller_Base extends Controller_Template
 
   public function action_login()
   {
-    Auth::check() and Response::redirect('user/index');
+    // Auth::check() and Response::redirect('user/index');
 
     if (Input::post('username') && Input::post('password')) {
       $username = Input::post('username');
