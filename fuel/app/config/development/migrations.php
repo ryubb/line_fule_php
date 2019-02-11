@@ -9,6 +9,7 @@ return array(
         0 => '001_create_users',
         1 => '002_add_login_hash_to_users',
         2 => '003_add_last_login_to_users',
+        3 => '004_create_timelines',
       ),
     ),
     'module' => 

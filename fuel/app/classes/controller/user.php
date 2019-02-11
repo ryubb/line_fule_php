@@ -1,6 +1,6 @@
 <?php
 
-class Controller_User extends Controller_Template
+class Controller_User extends Controller_Base
 {
 	public $template = 'base/template';
 	private $per_page = 10;
@@ -34,16 +34,6 @@ class Controller_User extends Controller_Template
 		$search = Input::get('search');
 
 		$data['users'] = Model_User::get_user($this->per_page, $pagination, $search);
-		// $data['users'] = Model_User::query()
-		// 														->order_by('id', 'desc')
-		// 														->limit($this->per_page)
-		// 														->offset($pagination->offset)
-		// 														->get();
-		// $data['users'] = DB::select()->from('users')
-		// 								->order_by('id', 'desc')
-		// 								->limit($this->per_page)
-		// 								->offset($pagination->offset)
-		// 								->execute()->as_array();
 
 		$this->template->content = View::forge('user/show', $data);
 		$this->template->content->set_safe('pagination', $pagination);
@@ -60,16 +50,20 @@ class Controller_User extends Controller_Template
 		$email = Input::post('email');
 		$password = Input::post('password');
 
-		$user = Model_User::forge();
+		if ($username && $email && $password) {
+			$user = Model_User::forge();
 
-		$user->username = $username;
-		$user->email = $email;
-		$user->password = Auth::hash_password($password);
-
-		if ($user->save()) {
-			$auth = Auth::instance();
-			$auth->login($username, $password);
-			Response::redirect('user/index');
+			$user->username = $username;
+			$user->email = $email;
+			$user->password = Auth::hash_password($password);
+	
+			if ($user->save()) {
+				$auth = Auth::instance();
+				$auth->login($username, $password);
+				Response::redirect('user/index');
+			} else {
+				View::forge('user/new');
+			}
 		}
 	}
 

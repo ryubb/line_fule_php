@@ -5,7 +5,7 @@
       <?php echo Form::open(array('url' => 'user/show', 'method' => 'GET')); ?>
         <?php echo Form::label('友達検索'); ?>
         <?php echo Form::input('search'); ?>
-        <?php echo Form::submit('検索'); ?>
+        <?php echo Form::submit('name', '検索'); ?>
       <?php echo Form::close(); ?>
     </div>
   </div>
