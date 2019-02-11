@@ -3,23 +3,41 @@
 class Controller_User extends Controller_Template
 {
 	public $template = 'base/template';
+	private $per_page = 10;
 
 	public function action_index()
 	{
 		$this->template->content = View::forge('user/index');
 	}
 
-	public function action_view()
+	public function action_view($id=0)
 	{
-		$id = Arr::get(Auth::get_user_id(), 1);
 		$id && $data['user'] = Model_User::find($id);
 		$this->template->content = View::forge('user/view', $data);
 	}
 
 	public function action_show()
 	{
-		$data['users'] = Model_User::find('all');
+		$data = array();
+		$count = Model_User::count();
+		$config = array(
+			'pagination_url' => 'user/show',
+			'uri_segment' => 3,
+			'num_links' => 4,
+			'per_page' => $this->per_page,
+			'total_items' => $count
+		);
+
+		$pagination = Pagination::forge('user_pagination', $config);
+
+		$data['users'] = Model_User::query()
+															->order_by('id', 'desc')
+															->limit($this->per_page)
+															->offset($pagination->offset)
+															->get();
+
 		$this->template->content = View::forge('user/show', $data);
+		$this->template->content->set_safe('pagination', $pagination);
 	}
 
 	public function action_new()

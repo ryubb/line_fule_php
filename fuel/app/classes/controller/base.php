@@ -8,6 +8,7 @@ class Controller_Base extends Controller_Template
   public function before()
   {
     parent::before();
+    $data = array();
     // if (!Auth::check() and ! in_array(Request::active()->action, array())) {
     //   Response::redirect('base/login');
     // } 

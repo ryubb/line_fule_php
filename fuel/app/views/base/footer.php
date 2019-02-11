@@ -1,7 +1,7 @@
 <div>
   <ul class="footer_list">
     <?php if (Auth::check()): ?>
-      <li class="footer_list-item"><?php echo Html::anchor('user/view/', 'マイページ('.Auth::get('username').')'); ?></li>
+      <li class="footer_list-item"><?php echo Html::anchor('user/view/'.Arr::get(Auth::get_user_id(), 1), 'マイページ('.Auth::get('username').')'); ?></li>
       <li class="footer_list-item"><?php echo Html::anchor('base/logout', 'ログアウト'); ?></li>
     <?php else: ?>
       <li class="footer_list-item"><?php echo Html::anchor('base/index', 'トップへ'); ?></li>
