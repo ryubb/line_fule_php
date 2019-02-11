@@ -30,11 +30,20 @@ class Controller_User extends Controller_Template
 
 		$pagination = Pagination::forge('user_pagination', $config);
 
-		$data['users'] = Model_User::query()
-															->order_by('id', 'desc')
-															->limit($this->per_page)
-															->offset($pagination->offset)
-															->get();
+		$search = '';
+		$search = Input::get('search');
+
+		$data['users'] = Model_User::get_user($this->per_page, $pagination, $search);
+		// $data['users'] = Model_User::query()
+		// 														->order_by('id', 'desc')
+		// 														->limit($this->per_page)
+		// 														->offset($pagination->offset)
+		// 														->get();
+		// $data['users'] = DB::select()->from('users')
+		// 								->order_by('id', 'desc')
+		// 								->limit($this->per_page)
+		// 								->offset($pagination->offset)
+		// 								->execute()->as_array();
 
 		$this->template->content = View::forge('user/show', $data);
 		$this->template->content->set_safe('pagination', $pagination);

@@ -24,4 +24,18 @@ class Model_User extends \Orm\Model
 
 	protected static $_table_name = 'users';
 
+	public static function get_user($per_page, $pagination, $search)
+	{
+		$query = DB::select()->from('users');
+		$result = $query
+						->order_by('id', 'desc')
+						->limit($per_page)
+						->offset($pagination->offset);
+		if (isset($search)) {
+			$result->where('username', '=', $search);
+		}
+
+		$result_array = $result->execute()->as_array();
+		return $result_array;
+	}
 }
